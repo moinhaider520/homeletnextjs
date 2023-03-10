@@ -20,7 +20,7 @@ handleIncrement = () => {
   let value = this.validateValue(this.state.counter + this.props.step);
   this.setState({counter: value});
 }
-handleChange = (e) => {
+handleChangeCounter = (e) => {
   let value = (e.target.value ? parseInt(e.target.value) : 0);
   value = this.validateValue(value);
   this.setState({counter: value});
@@ -52,7 +52,6 @@ handleIncrement3 = () => {
 handleChange3 = (e) => {
   let value = (e.target.value ? parseInt(e.target.value) : 0);
   value = this.validateValue(value);
-  this.setState({counter3: value});
 }
 
 validateValue(value) {
@@ -67,7 +66,7 @@ validateValue(value) {
 
 render(){
 
-      const {values} = this.props;
+      const {values,handleChange} = this.props;
       this.props.values;
         return(
 <>
@@ -181,6 +180,7 @@ render(){
           </div>
         </div>
       </div>
+      
 <section className="style_property_detail_section__LE1g_">
   <h3 className="style_inner_title__pzjcU">Year Built:</h3>
   <div className="mb-3 input_wrapper">
@@ -198,7 +198,7 @@ render(){
       <label>Bedrooms</label>
       <div className="style_item_buttons__nt3Df">
         <button className="style_minus_button__VcM6n" disabled="" onClick={this.handleDecrement} />
-        <span className="style_value__ApUjN" onChange={this.handleChange}>{this.state.counter}</span>
+        <span className="style_value__ApUjN" onChange={handleChange('bedrooms')}>{this.state.counter}</span>
         <button className="style_plus_button__WFFNw" onClick={this.handleIncrement}/>
       </div>
     </div>
@@ -206,7 +206,7 @@ render(){
       <label>Bathrooms</label>
       <div className="style_item_buttons__nt3Df">
       <button className="style_minus_button__VcM6n" disabled="" onClick={this.handleDecrement2} />
-        <span className="style_value__ApUjN" onChange={this.handleChange2}>{this.state.counter2}</span>
+        <span className="style_value__ApUjN" contentEditable="true" onChange={handleChange('bathrooms')}>{this.state.counter2}</span>
         <button className="style_plus_button__WFFNw" onClick={this.handleIncrement2}/>
       </div>
     </div>
@@ -214,7 +214,7 @@ render(){
       <label>Car Parkings</label>
       <div className="style_item_buttons__nt3Df">
       <button className="style_minus_button__VcM6n" disabled="" onClick={this.handleDecrement3} />
-        <span className="style_value__ApUjN" onChange={this.handleChange3}>{this.state.counter3}</span>
+        <span className="style_value__ApUjN" onChange={handleChange('parkings')}>{this.state.counter3}</span>
         <button className="style_plus_button__WFFNw" onClick={this.handleIncrement3}/>
       </div>
     </div>

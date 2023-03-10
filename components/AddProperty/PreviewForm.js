@@ -44,7 +44,7 @@ back = e =>{
             <section className="style_title_wrapper__iSnOM">
               <div className="style_title_wrapper_without_location__Oc1Zb">
                 <div>
-                  <h3>&lt;Property Title&gt;</h3>
+                  <h3>&lt;                        {values.bathrooms}&gt;</h3>
                 </div>
               </div>
               <span className="style_location__ZMD3F">&lt;Area, City&gt;</span>
@@ -104,6 +104,7 @@ back = e =>{
                     </li>
                     <li>
                       <span className="style_item_icon__WaULw">
+
                         <span
                           style={{
                             boxSizing: "border-box",
@@ -123,6 +124,7 @@ back = e =>{
                             right: 0
                           }}
                         >
+                          
                           <Image width="100" height="100"
                             alt="0 Beds"
                             src="../../images/bathroom.svg"

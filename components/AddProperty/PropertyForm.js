@@ -36,6 +36,7 @@ export default class PropertyForm extends Component{
         floors:'',
         floorunit:'',
         propertyfacing:'',
+        bedroomincrement:'',
     }
     nextStep = ()=>{
         const { step } = this.state;
@@ -59,7 +60,7 @@ export default class PropertyForm extends Component{
 
     render(){
         const {step} = this.state;
-        const {purpose, propertytype, propertysubtype, size, unit, price, title, description,location,yearbuilt,bedrooms,bathrooms,parking,image,details,features,services,floors,floorunit,propertyfacing} = this.state;
+        const {purpose, propertytype, propertysubtype, size, unit, price, title, description,location,yearbuilt,bedrooms,bathrooms,parking,image,details,features,services,floors,floorunit,propertyfacing,bedroomincrement} = this.state;
         const values = {purpose, propertytype, propertysubtype, size, unit, price, title, description,location,yearbuilt,bedrooms,bathrooms,parking,image,details,features,services,floors,floorunit,propertyfacing}
         
         switch(step){

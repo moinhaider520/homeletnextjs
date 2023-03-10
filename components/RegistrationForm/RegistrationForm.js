@@ -68,6 +68,7 @@ handleChange = input => e =>{
     case 3:
         return(
             <>
+            
             <ContactDetails
             nextStep={this.nextStep}
             prevStep={this.prevStep}

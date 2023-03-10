@@ -4,11 +4,13 @@ export default class IndividualDetails extends Component{
     continue = e =>{
         e.preventDefault();
         this.props.nextStep();
+        this.props.values;
     }
     back = e =>{
         e.preventDefault();
         this.props.prevStep();
     }
+
     render(){
         const {values,handleChange} = this.props;
         this.props.values;

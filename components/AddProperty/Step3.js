@@ -131,7 +131,7 @@ back = e =>{
   <ul className="style_property_subtype_action__RR7G4">
     <li>
       <label className="style_type_btn__zofvl">
-        <input id="house" type="radio" name="wantedBtn" defaultValue="house" />
+        <input id="house" type="radio" name="wantedBtn" onChange={handleChange('propertysubtype')} defaultValue={'House'} />
         <span className="style_content__FhYfn">
           <span className="style_img_wrapper__tI0fk">
             <span
@@ -184,7 +184,7 @@ back = e =>{
           id="guest house"
           type="radio"
           name="wantedBtn"
-          defaultValue="guest_house"
+          onChange={handleChange('propertysubtype')} defaultValue={'Guest House'}
         />
         <span className="style_content__FhYfn">
           <span className="style_img_wrapper__tI0fk">
