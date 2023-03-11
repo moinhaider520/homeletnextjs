@@ -41,7 +41,7 @@ export default function Register( {data} ){
 
 
 export async function getStaticProps() {
-  const res = await fetch('https://www.homelet.pk/homelet/web/next-register',{mode: 'no-cors'});
+  const res = await fetch('https://homelet.pk/homelet/web/next-register',{mode: 'no-cors'});
   const data = await res.json();
 
   return {
