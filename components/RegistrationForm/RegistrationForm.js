@@ -6,88 +6,124 @@ import { Component } from "react"
 import UserDetails from "./UserDetails"
 import ContactDetails from "./ContactDetails"
 import OTPVerification from "./OTPVerification"
+import { data } from "jquery"
 
-export default class RegistrationForm extends Component{
-  state={
-    step:1,
-    type:'',
-    userName:'',
+
+export default class RegistrationForm extends Component {
+
+  state = {
+    step: 1,
+    type: '',
+    userName: '',
+    companyName: '',
     firstName: '',
-    lastName:'',
-    gender:'',
-    contactnumber:'',
-    email:'',
-    password:'',
-    otp:'',
-}
+    lastName: '',
+    gender: '',
+    contactnumber: '',
+    email: '',
+    password: '',
+    otp: '',
+  }
 
-nextStep = ()=>{
+  nextStep = () => {
     const { step } = this.state;
     this.setState({
-        step: step + 1
+      step: step + 1
     });
-}
+  }
 
-prevStep = ()=>{
+  prevStep = () => {
     const { step } = this.state;
-    this.setState({
+    if (this.state.type == 3) {
+      this.setState({
+        step: step - 2
+      });
+    } else {
+      this.setState({
         step: step - 1
-    });
-}
+      });
+    }
+  }
 
-handleChange = input => e =>{
-    this.setState({[input]: e.target.value});
-}
-  render(){
-    const {step} = this.state;
-    const {type, userName, firstName, lastName, gender, contactnumber, email, password,otp} = this.state;
-    const values = {type, userName, firstName, lastName, gender, contactnumber, email, password,otp};
-    
-    switch(step){
+  handleChange = input => e => {
+    if (input === 'phone') {
+      this.setState({[input]: e});
+      this.setState({contactnumber: e});
+    } else {
+      this.setState({ [input]: e.target.value });
+    }
+
+    //this.setState({ [input]: e.target.value });
+  }
+  render() {
+    const { step } = this.state;
+    const { type, userName, companyName, firstName, lastName, gender, contactnumber, email, password, otp } = this.state;
+    const values = { type, userName, companyName, firstName, lastName, gender, contactnumber, email, password, otp };
+     
+
+    switch (step) {
       case 1:
-        return(
+        return (
           <>
-          <IndividualDetails
-          nextStep={this.nextStep}
-          handleChange={this.handleChange}
-          values={values}
-          />
-          </>
-        )
-      case 2:
-        return(
-          <>
-          <UserDetails
-          nextStep={this.nextStep}
-          prevStep={this.prevStep}
-          handleChange={this.handleChange}
-          values={values}
-          />
-          </>
-        )
-    case 3:
-        return(
-            <>
-            
-            <ContactDetails
-            nextStep={this.nextStep}
-            prevStep={this.prevStep}
-            handleChange={this.handleChange}
-            values={values}
+          
+            <IndividualDetails
+              nextStep={this.nextStep}
+              handleChange={this.handleChange} 
+              values={values}
+              modeldataUsertpye = {this.props.modeldataArray}
             />
-            </>
+          </>
         )
-    case 4:
-        return(
-            <>
+
+
+      case 2:
+        return (
+          <>
+
+            {
+              (values.type == 3) ?
+                (
+                  <>
+                    {this.nextStep()}
+                  </>
+                )
+                : (<UserDetails
+                  nextStep={this.nextStep}
+                  prevStep={this.prevStep}
+                  handleChange={this.handleChange}
+                  values={values}
+                  modelgenderArray = {this.props.modelgenderArray}
+                />)
+            }
+
+          </>
+        )
+
+
+      case 3:
+        return (
+          <>
+            <ContactDetails
+              nextStep={this.nextStep}
+              prevStep={this.prevStep}
+              handleChange={this.handleChange}
+              values={values}
+            />
+          </>
+        )
+      case 4:
+        return (
+          <>
             <OTPVerification
-            nextStep={this.nextStep}
-            prevStep={this.prevStep}
-            handleChange={this.handleChange}
-            values={values}/>
-            </>
+              nextStep={this.nextStep}
+              prevStep={this.prevStep}
+              handleChange={this.handleChange}
+              values={values} />
+          </>
         )
     }
-    
+
   }
+
+  
 }

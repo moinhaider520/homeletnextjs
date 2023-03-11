@@ -4,7 +4,11 @@ import RegistrationForm from "components/RegistrationForm/RegistrationForm"
 import Head from "next/head"
 import Link from "next/link"
 import { Component } from "react"
-export default function Register(){
+export default function Register( {data} ){
+
+  const modeldataArray = Object.entries(data.type_userss);
+  const modelgenderArray = Object.entries(data.genders);
+
     return(
         <>
         <div class="margin-top-65"></div>
@@ -21,7 +25,10 @@ export default function Register(){
                         Do not Have an Account? <Link href="/login">Log In!</Link>
                         </span>
                     </div>
-                    <RegistrationForm/>
+                    <RegistrationForm
+                    modeldataArray = {modeldataArray}
+                    modelgenderArray = {modelgenderArray}
+                    />
                   </div>
                 </div>
               </div>
@@ -30,5 +37,17 @@ export default function Register(){
         <div class="margin-top-65"></div>
         </>
     )
+}
+
+
+export async function getStaticProps() {
+  const res = await fetch('http://localhost/homelet/web/next-register',{mode: 'no-cors'});
+  const data = await res.json();
+
+  return {
+    props: {
+      data
+    },
+  };
 }
 
