@@ -54,7 +54,10 @@
 
 /* ---------------------------------- */
 
-
+.react-tel-input .form-control {
+    width: 495px !important;
+    height: 53px !important;
+}
 /* ADD PROPERTY PAGE */
 .property_score_card{
     box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
